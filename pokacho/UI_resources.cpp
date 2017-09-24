@@ -85,6 +85,15 @@ void button::setPosition(float x, float y){
 }
 
 
+
+coord button::getSize(){
+	return(coord{placeholder.getSize().x, placeholder.getSize().y});
+}
+
+coord &button::setSize(){
+	return(coord{ placeholder.getSize().x, placeholder.getSize().y });
+}
+
 sf::Color button::getPressedColor() { return pressed; }
 
 void button::setPressedColor(sf::Color newPressed){
@@ -130,13 +139,53 @@ bool button::isPressed() {
 			}
 		}
 	}
-	
+	return false;
 }
 
+bool button::isPressedOutside() {
+	sf::Vector2i mouse = sf::Mouse::getPosition(window);
 
-void button_test()
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		if (mouse.x < placeholder.getGlobalBounds().left || mouse.x > placeholder.getGlobalBounds().left + placeholder.getLocalBounds().width) {
+			std::cout << "estoy a la izquierda o a la derecha" << std::endl;
+			return true;
+		}
+		else if (mouse.y < placeholder.getGlobalBounds().top || mouse.y > placeholder.getGlobalBounds().top + placeholder.getLocalBounds().height) {
+			std::cout << "estoy arriba o abajo" << std::endl;
+			return true;
+		}
+	}
+	else
+		return false;
+}
+
+void button::writeMode() {
+	if (this->isPressed() && aux) {
+		aux = false;
+		std::cout << "the button has been pressed" << std::endl;
+	}
+	if (!aux) {
+		this->placeholder.setFillColor(pressed);
+		this->text.setString("");
+		sf::Event evnt;
+		while (window.pollEvent(evnt) || true) {
+			if (evnt.type == evnt.KeyPressed)
+				this->text.setString(this->text.getString() + evnt.text.unicode);
+			if (this->isPressedOutside()) {
+				aux = true;
+				break;
+			}
+		}
+	}
+}
+
+void button::reSetText() {
+	text.setPosition(placeholder.getPosition());
+}
+
+void nope()
 {
-	sf::RenderWindow window(sf::VideoMode(960, 680), "WeaknessCalculator", sf::Style::Close | sf::Style::Titlebar);
+	sf::RenderWindow window(sf::VideoMode(1200, 671), "WeaknessCalculator", sf::Style::Default);
 	window.setFramerateLimit(60);
 
 	sf::Texture boton;
@@ -159,7 +208,7 @@ void button_test()
 				window.close();
 		}
 
-		play.isPressed();
+		
 		window.clear(sf::Color(255, 255, 255, 255));
 		play.display();
 		window.display();

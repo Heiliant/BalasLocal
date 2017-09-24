@@ -21,7 +21,7 @@
 		name = "";
 	}
 
-	poke::poke(std::string alias, types uno, types dos) : name{ alias }, one{ uno }, two{ dos } {} //lista de inicializacion para ir practicando
+	poke::poke(std::string alias, types uno, types dos, std::string abs) : name{ alias }, one{ uno }, two{ dos }, path{ abs } {} //lista de inicializacion para ir practicando
 
 
 	void poke::weaknessCalc(types nat, std::vector<float> &resistances) {
@@ -280,11 +280,4 @@
 	}
 }
 
-	void lel() {
-	std::vector<poke> team;
-	team.push_back(poke("M-Latias", types::dragon, types::psiquico));
-	team.push_back(poke("Blaziken", types::fuego, types::lucha));
-	team.push_back(poke("Starmie", types::agua, types::psiquico));
-	team.push_back(poke("Lycanroc-D", types::roca, types::none));
-}
 

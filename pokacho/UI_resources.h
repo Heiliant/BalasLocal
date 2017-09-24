@@ -16,6 +16,7 @@ private:
 
 	coord pos; //coordenadas donde situaremos el boton
 
+	bool aux=true;
 	//MÉTODOS
 
 	
@@ -50,6 +51,9 @@ public:
 	void setPosition(std::pair<float, float> newPos); //X, Y
 	void setPosition(float x, float y); //X, Y
 
+	coord &setSize();
+	coord getSize();
+
 	sf::Color getPressedColor();
 	void setPressedColor(sf::Color newPressed);
 
@@ -61,5 +65,13 @@ public:
 
 	bool isPressed();
 
+	bool isPressedOutside();
+
 	void bestFit();
+
+	void writeMode();
+
+	void reSetText();
 };
+
+
