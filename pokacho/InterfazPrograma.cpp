@@ -4,6 +4,11 @@
 const float yncreas=40.0f;
 const float ynitial = 70.0f;
 const int imgSz=40;
+const sf::Color x2(230, 92, 0, 255);
+const sf::Color x4(255, 0, 255, 255);
+const sf::Color x05(0, 102, 193, 255);
+const sf::Color x025(0, 204, 0, 255);
+const sf::Color x0(250, 250, 250, 255);
 
 void pokeRenderer(std::vector<poke> team, sf::Texture art[], sf::Sprite image[], std::string **eff, sf::RenderWindow &window) {
 	sf::Font arial;
@@ -17,12 +22,8 @@ void pokeRenderer(std::vector<poke> team, sf::Texture art[], sf::Sprite image[],
 		image[i].setOrigin(image[i].getLocalBounds().width / 2, image[i].getLocalBounds().height / 2);
 		image[i].setPosition(60.0f, localY);
 		for (int j = 0; j < 18; ++j) {
-			//eff[i][j].setFont(arial);
-			//ff[i][j].setCharacterSize(10);
-			//eff[i][j]=("lul");
 			eff[i][j]=(std::to_string(team[i].resistances[j]));		
 			eff[i][j].resize(4);
-			//eff[i][j].setPosition(team[0].x[j], localY);
 		}
 	}
 }
@@ -60,6 +61,7 @@ void main() {
 	team.push_back(poke("Jolteon", types::electrico, types::none, "Assets/sprites/jolteon.png"));
 	team.push_back(poke("Braviary", types::volador, types::normal, "Assets/sprites/braviary.png"));
 	team.push_back(poke("Cobalion", types::acero, types::lucha, "Assets/sprites/cobalion.png"));
+	team.push_back(poke("Zoroark", types::siniestro, types::none, "Assets/sprites/zoroark.png"));
 
 	sf::Texture *art=new sf::Texture[team.size()];
 	sf::Sprite *images=new sf::Sprite[team.size()];
@@ -100,17 +102,24 @@ void main() {
 					if (eff[i][j] == "1.00")
 						num.setFillColor(sf::Color::Black);
 					else if(eff[i][j] == "2.00")
-						num.setFillColor(sf::Color(230, 92, 0, 255));
+						num.setFillColor(x2);
 					else if (eff[i][j] == "4.00")
-						num.setFillColor(sf::Color(255, 0, 255, 255));
+						num.setFillColor(x4);
 					else if (eff[i][j] == "0.50")
-						num.setFillColor(sf::Color(51, 102, 255, 255));
+						num.setFillColor(x05);
 					else if (eff[i][j] == "0.25")
-						num.setFillColor(sf::Color(0, 204, 0, 255));
+						num.setFillColor(x025);
+					else if (eff[i][j] == "0.00")
+					{
+						num.setFillColor(x0); 
+						num.setOutlineColor(sf::Color::Black);
+						num.setOutlineThickness(1);
+					}
 					else
 						num.setFillColor(sf::Color::Black);
 					num.setPosition(team[0].x[j]+60.0f, localY);
 					window.draw(num);
+					num.setOutlineThickness(0);
 				}
 			}
 
@@ -123,19 +132,19 @@ void main() {
 			for (int j = -1; j < 18; ++j) {
 				for (int k = 0; k < team.size(); ++k) {
 					switch (i) {
-					case 0: num.setFillColor(sf::Color(230, 92, 0, 255));
+					case 0: num.setFillColor(x2);
 						if (j < 0) { num.setString("x2");  }
 						else if (eff[k][j] == "2.00") ans++;
 						break;
-					case 1: num.setFillColor(sf::Color(255, 0, 255, 255));
+					case 1: num.setFillColor(x4);
 						if (j < 0) { num.setString("x4");  }
 						else if (eff[k][j] == "4.00") ans++;
 						break;
-					case 2: num.setFillColor(sf::Color(51, 102, 255, 255));
+					case 2: num.setFillColor(x05);
 						if (j < 0) { num.setString("x0.5");  }
 						else if (eff[k][j] == "0.50") ans++;
 						break;
-					case 3: num.setFillColor(sf::Color(0, 204, 0, 255));
+					case 3: num.setFillColor(x025);
 						if (j < 0) { num.setString("x0.25");  }
 						else if (eff[k][j] == "0.25") ans++;
 						break;	
@@ -157,5 +166,4 @@ void main() {
 		some.display();
 		window.display();
 	}
-
-}//drawear text
+}

@@ -227,9 +227,9 @@
 		//RES 
 		//DEB lucha
 		//INM fantasma
-		resistances.at(static_cast<int>(types::lucha)) *= 0.5f;
+		resistances.at(static_cast<int>(types::lucha)) *= 2.0f;
 
-		resistances.at(static_cast<int>(types::fantasma)) *= 2.0f;
+		resistances.at(static_cast<int>(types::fantasma)) *= 0.0f;
 	}
 		break;
 	case types::planta: {
