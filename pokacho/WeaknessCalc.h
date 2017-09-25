@@ -14,7 +14,7 @@ public:
 	std::vector<float> resistances = std::vector<float>(18, 1.0);
 	std::string path;
 
-	float x[18] = {85.0f, 145.0f, 215.0f, 280.0f, 345.0f, 410.0f, 470.0f, 530.0f, 595.0f, 660.0f, 720.0f, 785.0f, 855.0f, 915.0f, 975.0f, 1040.0f, 1110.0f, 1175.0f};
+	float x[18];
 	float y;
 
 	poke();

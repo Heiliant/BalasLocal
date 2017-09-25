@@ -1,7 +1,7 @@
 #include "UI_resources.h"
 #include "WeaknessCalc.h"
 
-void pokeRenderer(std::vector<poke> team, sf::Texture art[], sf::Sprite image[], sf::Text eff[]) {
+void pokeRenderer(std::vector<poke> team, sf::Texture art[], sf::Sprite image[], std::string **eff, sf::RenderWindow &window) {
 	sf::Font arial;
 	arial.loadFromFile("Assets/fuentes/arial.ttf");
 	for (unsigned int i = 0; i < team.size(); ++i) {
@@ -13,15 +13,20 @@ void pokeRenderer(std::vector<poke> team, sf::Texture art[], sf::Sprite image[],
 		image[i].setOrigin(image[i].getLocalBounds().width / 2, image[i].getLocalBounds().height / 2);
 		image[i].setPosition(60.0f, localY);
 		for (int j = 0; j < 18; ++j) {
-			eff[j].setFont(arial);
-			eff[j].setCharacterSize(10);
-			eff[j].setString(std::to_string(team[i].resistances[j]));
-			eff[j].setPosition(team[0].x[j], localY);
+			//eff[i][j].setFont(arial);
+			//ff[i][j].setCharacterSize(10);
+			//eff[i][j]=("lul");
+			eff[i][j]=(std::to_string(team[i].resistances[j]));		
+			eff[i][j].resize(4);
+			//eff[i][j].setPosition(team[0].x[j], localY);
 		}
 	}
 }
 
 void main() {
+
+	sf::Font arial;
+	arial.loadFromFile("Assets/fuentes/arial.ttf");
 
 	sf::Texture graella;
 	graella.loadFromFile("Assets/sprites/tabla_tipos.png");
@@ -44,7 +49,7 @@ void main() {
 	some.bestFit();
 
 	std::vector<poke> team;
-	team.push_back(poke("M-Latias", types::dragon, types::psiquico, "Assets/sprites/latias.png"));
+	team.push_back(poke("M-Latias", types::dragon, types::siniestro, "Assets/sprites/latias.png"));
 	team.push_back(poke("Blaziken", types::fuego, types::lucha, "Assets/sprites/blaziken.png"));
 	team.push_back(poke("Starmie", types::agua, types::psiquico, "Assets/sprites/starmie.png"));
 	team.push_back(poke("Lycanroc-D", types::roca, types::none, "Assets/sprites/lycanroc.png"));
@@ -54,9 +59,16 @@ void main() {
 
 	sf::Texture *art=new sf::Texture[team.size()];
 	sf::Sprite *images=new sf::Sprite[team.size()];
-	sf::Text *eff = new sf::Text[18];
+	std::string **eff = new std::string*[team.size()];
+	for (int i = 0; i < team.size(); ++i)
+		eff[i] = new std::string[18];
 
-	pokeRenderer(team, art, images, eff);
+	for (int i = 0; i < team.size(); ++i) {
+		team.at(i).weaknessCalc(team[i].one, team[i].resistances);
+		team.at(i).weaknessCalc(team[i].two, team[i].resistances);
+	}
+
+	pokeRenderer(team, art, images, eff, window);
 
 	while (window.isOpen()) {
 
@@ -70,14 +82,49 @@ void main() {
 			}
 		}
 		window.clear(sf::Color(255, 255, 255, 255));
-		//std::cout << rand()%100 << "  " << sf::Mouse::getPosition(window).x << std::endl;
 
-		for (int i = 0; i < team.size(); ++i)
+
+		float localY;
+		for (int i = 0; i < team.size(); ++i) {
+			localY = 80.0f + 55.0f*static_cast<float>(i);
 			window.draw(images[i]);
+			sf::Text num;
+			num.setFont(arial);
+			num.setCharacterSize(15);
+				for (int j = 0; j < 18; ++j) {
+					num.setString(eff[i][j]);
+					if (eff[i][j] == "1.00")
+						num.setFillColor(sf::Color::Black);
+					else if(eff[i][j] == "2.00")
+						num.setFillColor(sf::Color(230, 92, 0, 255));
+					else if (eff[i][j] == "4.00")
+						num.setFillColor(sf::Color(255, 0, 255, 255));
+					else if (eff[i][j] == "0.50")
+						num.setFillColor(sf::Color(51, 102, 255, 255));
+					else if (eff[i][j] == "0.25")
+						num.setFillColor(sf::Color(0, 204, 0, 255));
+					else
+						num.setFillColor(sf::Color::Black);
+					num.setPosition(team[0].x[j]+60.0f, localY);
+					window.draw(num);
+				}
+			}
+
+		for (int i = 0; i < 4; ++i) {
+			localY = 80.0f + 55.0f*static_cast<float>(i+team.size());
+			int ans=0;
+			for (int j = 0; j < 18; ++j) {
+				for (int k = 0; k < team.size(); ++k) {
+					if (eff[k][j] == "2.00")
+						ans ++;
+				}
+			}
+		}
+
 		window.draw(tipos);
 		//window.draw(toolbar);
 		some.display();
 		window.display();
 	}
 
-}
+}//drawear text

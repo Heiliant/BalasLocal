@@ -13,15 +13,70 @@
 		one = uno;
 		two = types::none;
 		name = "";
+		x[0] = 85.0f; 
+		x[1] = 145.0f;
+		x[2] = 215.0f;
+		x[3] = 280.0f;
+		x[4] = 345.0f;
+		x[5] = 410.0f;
+		x[6] = 470.0f;
+		x[7] = 530.0f;
+		x[8] = 595.0f;
+		x[9] = 660.0f;
+		x[10] = 720.0f;
+		x[11] = 785.0f;
+		x[12] = 855.0f;
+		x[13] = 915.0f;
+		x[14] = 975.0f;
+		x[15] = 1040.0f;
+		x[16] = 1110.0f;
+		x[17] = 1175.0f;
 	}
 
 	poke::poke(types uno, types dos) {
 		one = uno;
 		two = dos;
 		name = "";
+		x[0] = 85.0f;
+		x[1] = 145.0f;
+		x[2] = 215.0f;
+		x[3] = 280.0f;
+		x[4] = 345.0f;
+		x[5] = 410.0f;
+		x[6] = 470.0f;
+		x[7] = 530.0f;
+		x[8] = 595.0f;
+		x[9] = 660.0f;
+		x[10] = 720.0f;
+		x[11] = 785.0f;
+		x[12] = 855.0f;
+		x[13] = 915.0f;
+		x[14] = 975.0f;
+		x[15] = 1040.0f;
+		x[16] = 1110.0f;
+		x[17] = 1175.0f;
 	}
 
-	poke::poke(std::string alias, types uno, types dos, std::string abs) : name{ alias }, one{ uno }, two{ dos }, path{ abs } {} //lista de inicializacion para ir practicando
+	poke::poke(std::string alias, types uno, types dos, std::string abs) : name{ alias }, one{ uno }, two{ dos }, path{ abs } {
+		x[0] = 85.0f;
+		x[1] = 145.0f;
+		x[2] = 215.0f;
+		x[3] = 280.0f;
+		x[4] = 345.0f;
+		x[5] = 410.0f;
+		x[6] = 470.0f;
+		x[7] = 530.0f;
+		x[8] = 595.0f;
+		x[9] = 660.0f;
+		x[10] = 720.0f;
+		x[11] = 785.0f;
+		x[12] = 855.0f;
+		x[13] = 915.0f;
+		x[14] = 975.0f;
+		x[15] = 1040.0f;
+		x[16] = 1110.0f;
+		x[17] = 1175.0f;
+	} //lista de inicializacion para ir practicando
 
 
 	void poke::weaknessCalc(types nat, std::vector<float> &resistances) {
