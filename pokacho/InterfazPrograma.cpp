@@ -1,15 +1,19 @@
 #include "UI_resources.h"
 #include "WeaknessCalc.h"
 
+const float yncreas=40.0f;
+const float ynitial = 70.0f;
+const int imgSz=40;
+
 void pokeRenderer(std::vector<poke> team, sf::Texture art[], sf::Sprite image[], std::string **eff, sf::RenderWindow &window) {
 	sf::Font arial;
 	arial.loadFromFile("Assets/fuentes/arial.ttf");
 	for (unsigned int i = 0; i < team.size(); ++i) {
-		float localY = 80.0f + 55.0f*static_cast<float>(i);
+		float localY = ynitial + yncreas*static_cast<float>(i);
 
 		art[i].loadFromFile(team[i].path);
 		image[i].setTexture(art[i]);
-		image[i].scale(sf::Vector2f(50 / image[i].getLocalBounds().width, 50 / image[i].getLocalBounds().height));
+		image[i].scale(sf::Vector2f(imgSz / image[i].getLocalBounds().width, imgSz / image[i].getLocalBounds().height));
 		image[i].setOrigin(image[i].getLocalBounds().width / 2, image[i].getLocalBounds().height / 2);
 		image[i].setPosition(60.0f, localY);
 		for (int j = 0; j < 18; ++j) {
@@ -49,7 +53,7 @@ void main() {
 	some.bestFit();
 
 	std::vector<poke> team;
-	team.push_back(poke("M-Latias", types::dragon, types::siniestro, "Assets/sprites/latias.png"));
+	team.push_back(poke("M-Latias", types::dragon, types::psiquico, "Assets/sprites/latias.png"));
 	team.push_back(poke("Blaziken", types::fuego, types::lucha, "Assets/sprites/blaziken.png"));
 	team.push_back(poke("Starmie", types::agua, types::psiquico, "Assets/sprites/starmie.png"));
 	team.push_back(poke("Lycanroc-D", types::roca, types::none, "Assets/sprites/lycanroc.png"));
@@ -86,7 +90,7 @@ void main() {
 
 		float localY;
 		for (int i = 0; i < team.size(); ++i) {
-			localY = 80.0f + 55.0f*static_cast<float>(i);
+			localY = ynitial + yncreas*static_cast<float>(i);
 			window.draw(images[i]);
 			sf::Text num;
 			num.setFont(arial);
@@ -111,13 +115,40 @@ void main() {
 			}
 
 		for (int i = 0; i < 4; ++i) {
-			localY = 80.0f + 55.0f*static_cast<float>(i+team.size());
+			localY = ynitial + yncreas*static_cast<float>(i+team.size());
 			int ans=0;
-			for (int j = 0; j < 18; ++j) {
+			sf::Text num;
+			num.setFont(arial);
+			num.setCharacterSize(15);
+			for (int j = -1; j < 18; ++j) {
 				for (int k = 0; k < team.size(); ++k) {
-					if (eff[k][j] == "2.00")
-						ans ++;
+					switch (i) {
+					case 0: num.setFillColor(sf::Color(230, 92, 0, 255));
+						if (j < 0) { num.setString("x2");  }
+						else if (eff[k][j] == "2.00") ans++;
+						break;
+					case 1: num.setFillColor(sf::Color(255, 0, 255, 255));
+						if (j < 0) { num.setString("x4");  }
+						else if (eff[k][j] == "4.00") ans++;
+						break;
+					case 2: num.setFillColor(sf::Color(51, 102, 255, 255));
+						if (j < 0) { num.setString("x0.5");  }
+						else if (eff[k][j] == "0.50") ans++;
+						break;
+					case 3: num.setFillColor(sf::Color(0, 204, 0, 255));
+						if (j < 0) { num.setString("x0.25");  }
+						else if (eff[k][j] == "0.25") ans++;
+						break;	
+					}
+					if (j >= 0) {
+						num.setString(std::to_string(ans));
+						num.setPosition(team[0].x[j] + 60.0f, localY);
+					}
+					else
+						num.setPosition(team[0].x[j]+60.0f, localY);
 				}
+				window.draw(num);
+				ans = 0;
 			}
 		}
 
