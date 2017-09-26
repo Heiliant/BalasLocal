@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PracticaSFML", "PracticaSFM
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chess", "chess\chess.vcxproj", "{87CFF1AD-6F32-42F2-B96A-9B98D4D7F289}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "noSFML", "noSFML\noSFML.vcxproj", "{624DE418-95D9-461D-94B9-4A6291739E1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{87CFF1AD-6F32-42F2-B96A-9B98D4D7F289}.Release|x64.Build.0 = Release|x64
 		{87CFF1AD-6F32-42F2-B96A-9B98D4D7F289}.Release|x86.ActiveCfg = Release|Win32
 		{87CFF1AD-6F32-42F2-B96A-9B98D4D7F289}.Release|x86.Build.0 = Release|Win32
+		{624DE418-95D9-461D-94B9-4A6291739E1B}.Debug|x64.ActiveCfg = Debug|x64
+		{624DE418-95D9-461D-94B9-4A6291739E1B}.Debug|x64.Build.0 = Debug|x64
+		{624DE418-95D9-461D-94B9-4A6291739E1B}.Debug|x86.ActiveCfg = Debug|Win32
+		{624DE418-95D9-461D-94B9-4A6291739E1B}.Debug|x86.Build.0 = Debug|Win32
+		{624DE418-95D9-461D-94B9-4A6291739E1B}.Release|x64.ActiveCfg = Release|x64
+		{624DE418-95D9-461D-94B9-4A6291739E1B}.Release|x64.Build.0 = Release|x64
+		{624DE418-95D9-461D-94B9-4A6291739E1B}.Release|x86.ActiveCfg = Release|Win32
+		{624DE418-95D9-461D-94B9-4A6291739E1B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

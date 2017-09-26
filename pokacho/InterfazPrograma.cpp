@@ -61,9 +61,10 @@ void main() {
 	team.push_back(poke("Jolteon", types::electrico, types::none, "Assets/sprites/jolteon.png"));
 	team.push_back(poke("Braviary", types::volador, types::normal, "Assets/sprites/braviary.png"));
 	team.push_back(poke("Cobalion", types::acero, types::lucha, "Assets/sprites/cobalion.png"));
-	//team.push_back(poke("Zoroark", types::siniestro, types::none, "Assets/sprites/zoroark.png"));
-	//team.push_back(poke("Whimsicott", types::planta, types::hada, "Assets/sprites/whimsicott.png"));
-	//team.push_back(poke("Dusknoir", types::fantasma, types::none, "Assets/sprites/dusknoir.png"));
+	team.push_back(poke("Zoroark", types::siniestro, types::psiquico, "Assets/sprites/zoroark.png"));
+	team.push_back(poke("Whimsicott", types::planta, types::hada, "Assets/sprites/whimsicott.png"));
+	team.push_back(poke("Dusknoir", types::fantasma, types::none, "Assets/sprites/dusknoir.png"));
+
 
 	sf::Texture *art=new sf::Texture[team.size()];
 	sf::Sprite *images=new sf::Sprite[team.size()];
