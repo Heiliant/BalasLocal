@@ -46,7 +46,7 @@ public:
 };
 
 
-void main()
+void button()
 {
 	swindow window(sf::VideoMode(960, 680), "Go!", sf::Style::Close | sf::Style::Titlebar);
 	window.setFramerateLimit(60);
@@ -75,7 +75,7 @@ void main()
 				window.close();
 		}
 
-		rect.setPosition(window.getSize().x/2, window.getSize().y/2);
+		//rect.setPosition(window.getSize().x/2, window.getSize().y/2);
 
 		window.clear();
 		window.draw(proba);

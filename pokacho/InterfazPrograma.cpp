@@ -1,6 +1,8 @@
 #include "UI_resources.h"
 #include "WeaknessCalc.h"
 
+enum class cunts{balas, willy};
+
 const float yncreas=40.0f;
 const float ynitial = 70.0f;
 const int imgSz=40;
@@ -25,6 +27,40 @@ void pokeRenderer(std::vector<poke> team, sf::Texture art[], sf::Sprite image[],
 			eff[i][j]=(std::to_string(team[i].resistances[j]));		
 			eff[i][j].resize(4);
 		}
+	}
+}
+
+
+
+template<typename T>
+void teamFiller(std::vector<T> &team, cunts pj) {
+	switch (pj) {
+	case cunts::balas:
+		team.push_back(poke("M-Latias", types::dragon, types::psiquico, "Assets/sprites/latias.png"));
+		team.push_back(poke("Blaziken", types::lucha, types::fuego, "Assets/sprites/blaziken.png"));
+		team.push_back(poke("Starmie", types::agua, types::psiquico, "Assets/sprites/starmie.png"));
+		team.push_back(poke("Lycanroc-D", types::roca, types::none, "Assets/sprites/lycanroc.png"));
+		team.push_back(poke("Jolteon", types::electrico, types::none, "Assets/sprites/jolteon.png"));
+		team.push_back(poke("Braviary", types::volador, types::normal, "Assets/sprites/braviary.png"));
+		team.push_back(poke("Cobalion", types::acero, types::lucha, "Assets/sprites/cobalion.png"));
+		team.push_back(poke("Hoopa", types::siniestro, types::psiquico, "Assets/sprites/hoopa-u.png"));
+		team.push_back(poke("Whimsicott", types::hada, types::planta, "Assets/sprites/whimsicott.png"));
+		team.push_back(poke("Dusknoir", types::fantasma, types::none, "Assets/sprites/dusknoir.png"));
+		team.push_back(poke("Golisopod", types::bicho, types::agua, "Assets/sprites/golisopod.png"));
+		break;
+	case cunts::willy:
+		team.push_back(poke("M-Blastoise", types::agua, types::none, "Assets/sprites/blastoise.png"));
+		team.push_back(poke("Tyranitar", types::siniestro, types::roca, "Assets/sprites/tyranitar.png"));
+		team.push_back(poke("Suicune", types::agua, types::none, "Assets/sprites/suicune.png"));
+		team.push_back(poke("Umbreon", types::siniestro, types::none, "Assets/sprites/umbreon.png"));
+		team.push_back(poke("Venusaur", types::veneno, types::planta, "Assets/sprites/venusaur.png"));
+		team.push_back(poke("Rhydon", types::roca, types::tierra, "Assets/sprites/rhydon.png"));
+		team.push_back(poke("Type:Null", types::normal, types::none, "Assets/sprites/codigocero.png"));
+		team.push_back(poke("Salamence", types::dragon, types::volador, "Assets/sprites/salamence.png"));
+		team.push_back(poke("Gengar", types::veneno, types::fantasma, "Assets/sprites/gengar.png"));
+		team.push_back(poke("Charizard", types::fuego, types::volador, "Assets/sprites/charizard.png"));
+		team.push_back(poke("Mudsdale", types::tierra, types::none, "Assets/sprites/mudsdale.png"));
+		break;
 	}
 }
 
@@ -54,16 +90,8 @@ void main() {
 	some.bestFit();
 
 	std::vector<poke> team;
-	team.push_back(poke("M-Latias", types::dragon, types::psiquico, "Assets/sprites/latias.png"));
-	team.push_back(poke("Blaziken", types::fuego, types::lucha, "Assets/sprites/blaziken.png"));
-	team.push_back(poke("Starmie", types::agua, types::psiquico, "Assets/sprites/starmie.png"));
-	team.push_back(poke("Lycanroc-D", types::roca, types::none, "Assets/sprites/lycanroc.png"));
-	team.push_back(poke("Jolteon", types::electrico, types::none, "Assets/sprites/jolteon.png"));
-	team.push_back(poke("Braviary", types::volador, types::normal, "Assets/sprites/braviary.png"));
-	team.push_back(poke("Cobalion", types::acero, types::lucha, "Assets/sprites/cobalion.png"));
-	team.push_back(poke("Zoroark", types::siniestro, types::none, "Assets/sprites/zoroark.png"));
-	team.push_back(poke("Whimsicott", types::planta, types::hada, "Assets/sprites/whimsicott.png"));
-	team.push_back(poke("Dusknoir", types::fantasma, types::none, "Assets/sprites/dusknoir.png"));
+	
+	teamFiller(team, cunts::willy);
 
 	sf::Texture *art=new sf::Texture[team.size()];
 	sf::Sprite *images=new sf::Sprite[team.size()];

@@ -120,6 +120,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Go.cpp" />
+    <ClCompile Include="moonLander.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="moonLander.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
