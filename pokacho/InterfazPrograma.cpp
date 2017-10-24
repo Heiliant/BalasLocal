@@ -64,7 +64,7 @@ void teamFiller(std::vector<T> &team, cunts pj) {
 	}
 }
 
-void main() {
+void main2() {
 
 	sf::Font arial;
 	arial.loadFromFile("Assets/fuentes/arial.ttf");
@@ -91,7 +91,7 @@ void main() {
 
 	std::vector<poke> team;
 	
-	teamFiller(team, cunts::willy);
+	teamFiller(team, cunts::balas);
 
 	sf::Texture *art=new sf::Texture[team.size()];
 	sf::Sprite *images=new sf::Sprite[team.size()];

@@ -24,12 +24,27 @@
     <ClCompile Include="InterfazPrograma.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+    <ClCompile Include="calculadora.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="scrollbar.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="escena.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI_resources.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="WeaknessCalc.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="scrollbar.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="escena.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

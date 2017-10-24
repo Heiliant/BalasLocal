@@ -1,6 +1,6 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
-
+/*
 using swindow = sf::RenderWindow;
 using srect = sf::RectangleShape;
 using stexture = sf::Texture;
@@ -85,3 +85,4 @@ void button()
 	} 
 }
 
+*/

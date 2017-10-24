@@ -121,11 +121,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="calculadora.cpp" />
+    <ClCompile Include="escena.cpp" />
     <ClCompile Include="InterfazPrograma.cpp" />
+    <ClCompile Include="scrollbar.cpp" />
     <ClCompile Include="UI_resources.cpp" />
     <ClCompile Include="WeaknessCalc.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="escena.h" />
+    <ClInclude Include="scrollbar.h" />
     <ClInclude Include="UI_resources.h" />
     <ClInclude Include="WeaknessCalc.h" />
   </ItemGroup>
